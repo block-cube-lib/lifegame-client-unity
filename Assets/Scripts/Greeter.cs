@@ -9,12 +9,12 @@ using UnityEngine;
 public class Greeter : MonoBehaviour
 {
     const int Port = 50051;
-    Server server;
+    Server server = null;
 
     // Start is called before the first frame update
     void Start ()
     {
-        server = StartServer();
+        //server = StartServer();
         Greet("start user");
     }
 
@@ -62,7 +62,10 @@ public class Greeter : MonoBehaviour
 
     void OnDisable()
     {
-        server.ShutdownAsync().Wait();
-        Debug.Log("server shutdown");
+        if (server != null)
+        {
+            server.ShutdownAsync().Wait();
+            Debug.Log("server shutdown");
+        }
     }
 }
