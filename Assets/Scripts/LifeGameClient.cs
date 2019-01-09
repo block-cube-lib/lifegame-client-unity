@@ -20,24 +20,27 @@ public class LifeGameClient : MonoBehaviour
 
     List<Cell> cells = new List<Cell>();
 
-    Lifegame.UpdateResponse updateResponse = null;
+    Lifegame.CellsResponse cellsResponce = null;
 
     int count = 0;
 
     void Update()
     {
-        if (this.updateResponse != null)
+        if (this.cellsResponce != null)
         {
-            var responce = updateResponse;
+            var responce = cellsResponce;
             for (int i = 0; i < this.cells.Count; ++i)
             {
                 this.cells[i].SetState(responce.Cells[i]);
             }
 
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                //this.updateResponse = client.Update(new Lifegame.UpdateRequest());
-                client.ResetCells(new Lifegame.ResetRequest());
+                Task.Run(() => client.ResetCells(new Lifegame.ResetRequest()));
+            }
+            else if (Input.anyKeyDown)
+            {
+                Task.Run(() =>client.UpdateAsync(new Lifegame.UpdateRequest()));
             }
             Debug.Log($"update count = {count}, alive cell count: {this.cells.Count(e => e.State == Lifegame.Cell.Alive)}");
         }
@@ -48,7 +51,7 @@ public class LifeGameClient : MonoBehaviour
         while(channel != null)
         {
             count++;
-            this.updateResponse = await client.UpdateAsync(new Lifegame.UpdateRequest());
+            this.cellsResponce = await client.GetCellsAsync(new Lifegame.CellsRequest());
         }
     }
 
@@ -64,7 +67,7 @@ public class LifeGameClient : MonoBehaviour
         {
             this.cells.Add(Instantiate(cellPrefab, field.transform));
         }
-        this.updateResponse = client.Update(new Lifegame.UpdateRequest());
+        this.cellsResponce = client.GetCells(new Lifegame.CellsRequest());
     }
 
     // Update is called once per frame
