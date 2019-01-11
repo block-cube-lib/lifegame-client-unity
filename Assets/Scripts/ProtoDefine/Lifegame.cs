@@ -27,16 +27,13 @@ namespace Lifegame {
             "ChVwcm90b3MvbGlmZWdhbWUucHJvdG8SCGxpZmVnYW1lIhIKEEZpZWxkU2l6",
             "ZVJlcXVlc3QiMgoRRmllbGRTaXplUmVzcG9uc2USDQoFd2lkdGgYASABKA0S",
             "DgoGaGVpZ2h0GAIgASgNIg4KDENlbGxzUmVxdWVzdCIuCg1DZWxsc1Jlc3Bv",
-            "bnNlEh0KBWNlbGxzGAEgAygOMg4ubGlmZWdhbWUuQ2VsbCIPCg1VcGRhdGVS",
-            "ZXF1ZXN0Ii8KDlVwZGF0ZVJlc3BvbnNlEh0KBWNlbGxzGAEgAygOMg4ubGlm",
-            "ZWdhbWUuQ2VsbCIOCgxSZXNldFJlcXVlc3QiDwoNUmVzZXRSZXNwb25zZSob",
-            "CgRDZWxsEgkKBUFsaXZlEAASCAoERGVhZBABMpQCCghMaWZlR2FtZRJJCgxH",
-            "ZXRGaWVsZFNpemUSGi5saWZlZ2FtZS5GaWVsZFNpemVSZXF1ZXN0GhsubGlm",
-            "ZWdhbWUuRmllbGRTaXplUmVzcG9uc2UiABI9CghHZXRDZWxscxIWLmxpZmVn",
-            "YW1lLkNlbGxzUmVxdWVzdBoXLmxpZmVnYW1lLkNlbGxzUmVzcG9uc2UiABI9",
-            "CgZVcGRhdGUSFy5saWZlZ2FtZS5VcGRhdGVSZXF1ZXN0GhgubGlmZWdhbWUu",
-            "VXBkYXRlUmVzcG9uc2UiABI/CgpSZXNldENlbGxzEhYubGlmZWdhbWUuUmVz",
-            "ZXRSZXF1ZXN0GhcubGlmZWdhbWUuUmVzZXRSZXNwb25zZSIAYgZwcm90bzM="));
+            "bnNlEh0KBWNlbGxzGAEgAygOMg4ubGlmZWdhbWUuQ2VsbCIOCgxSZXNldFJl",
+            "cXVlc3QiDwoNUmVzZXRSZXNwb25zZSobCgRDZWxsEgkKBUFsaXZlEAASCAoE",
+            "RGVhZBABMtABCghMaWZlZ2FtZRJJCgxHZXRGaWVsZFNpemUSGi5saWZlZ2Ft",
+            "ZS5GaWVsZFNpemVSZXF1ZXN0GhsubGlmZWdhbWUuRmllbGRTaXplUmVzcG9u",
+            "c2UiABI9CghHZXRDZWxscxIWLmxpZmVnYW1lLkNlbGxzUmVxdWVzdBoXLmxp",
+            "ZmVnYW1lLkNlbGxzUmVzcG9uc2UiABI6CgVSZXNldBIWLmxpZmVnYW1lLlJl",
+            "c2V0UmVxdWVzdBoXLmxpZmVnYW1lLlJlc2V0UmVzcG9uc2UiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Lifegame.Cell), }, new pbr::GeneratedClrTypeInfo[] {
@@ -44,8 +41,6 @@ namespace Lifegame {
             new pbr::GeneratedClrTypeInfo(typeof(global::Lifegame.FieldSizeResponse), global::Lifegame.FieldSizeResponse.Parser, new[]{ "Width", "Height" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lifegame.CellsRequest), global::Lifegame.CellsRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lifegame.CellsResponse), global::Lifegame.CellsResponse.Parser, new[]{ "Cells" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lifegame.UpdateRequest), global::Lifegame.UpdateRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lifegame.UpdateResponse), global::Lifegame.UpdateResponse.Parser, new[]{ "Cells" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lifegame.ResetRequest), global::Lifegame.ResetRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lifegame.ResetResponse), global::Lifegame.ResetResponse.Parser, null, null, null, null)
           }));
@@ -543,229 +538,6 @@ namespace Lifegame {
 
   }
 
-  public sealed partial class UpdateRequest : pb::IMessage<UpdateRequest> {
-    private static readonly pb::MessageParser<UpdateRequest> _parser = new pb::MessageParser<UpdateRequest>(() => new UpdateRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UpdateRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lifegame.LifegameReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpdateRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpdateRequest(UpdateRequest other) : this() {
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpdateRequest Clone() {
-      return new UpdateRequest(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as UpdateRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UpdateRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UpdateRequest other) {
-      if (other == null) {
-        return;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class UpdateResponse : pb::IMessage<UpdateResponse> {
-    private static readonly pb::MessageParser<UpdateResponse> _parser = new pb::MessageParser<UpdateResponse>(() => new UpdateResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UpdateResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lifegame.LifegameReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpdateResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpdateResponse(UpdateResponse other) : this() {
-      cells_ = other.cells_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpdateResponse Clone() {
-      return new UpdateResponse(this);
-    }
-
-    /// <summary>Field number for the "cells" field.</summary>
-    public const int CellsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Lifegame.Cell> _repeated_cells_codec
-        = pb::FieldCodec.ForEnum(10, x => (int) x, x => (global::Lifegame.Cell) x);
-    private readonly pbc::RepeatedField<global::Lifegame.Cell> cells_ = new pbc::RepeatedField<global::Lifegame.Cell>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Lifegame.Cell> Cells {
-      get { return cells_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as UpdateResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UpdateResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!cells_.Equals(other.cells_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= cells_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      cells_.WriteTo(output, _repeated_cells_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += cells_.CalculateSize(_repeated_cells_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UpdateResponse other) {
-      if (other == null) {
-        return;
-      }
-      cells_.Add(other.cells_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10:
-          case 8: {
-            cells_.AddEntriesFrom(input, _repeated_cells_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public sealed partial class ResetRequest : pb::IMessage<ResetRequest> {
     private static readonly pb::MessageParser<ResetRequest> _parser = new pb::MessageParser<ResetRequest>(() => new ResetRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -774,7 +546,7 @@ namespace Lifegame {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lifegame.LifegameReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Lifegame.LifegameReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -875,7 +647,7 @@ namespace Lifegame {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lifegame.LifegameReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Lifegame.LifegameReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

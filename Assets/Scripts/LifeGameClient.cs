@@ -7,58 +7,80 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using System.Linq;
 
-public class LifeGameClient : MonoBehaviour
+/// <summary>
+/// ライフゲームの結果を受け取る
+/// </summary>
+public class LifegameClient : MonoBehaviour
 {
+    /// <summary>
+    /// ライフゲームのセル群
+    /// </summary>
     [SerializeField]
     GridLayoutGroup field = null;
 
+    /// <summary>
+    /// Cellのコピー元
+    /// </summary>
     [SerializeField]
     Cell cellPrefab = null;
 
+    /// <summary>
+    /// チャンネル
+    /// </summary>
     Channel channel = null;
-    Lifegame.LifeGame.LifeGameClient client = null;
 
+    /// <summary>
+    /// クライアント
+    /// </summary>
+    Lifegame.Lifegame.LifegameClient client = null;
+
+    /// <summary>
+    /// 表示しているセルのリスト
+    /// </summary>
     List<Cell> cells = new List<Cell>();
 
+    /// <summary>
+    /// セルを取得したときの戻り値
+    /// </summary>
     Lifegame.CellsResponse cellsResponce = null;
-
-    int count = 0;
 
     void Update()
     {
-        if (this.cellsResponce != null)
+        if (this.cellsResponce == null)
         {
-            var responce = cellsResponce;
-            for (int i = 0; i < this.cells.Count; ++i)
-            {
-                this.cells[i].SetState(responce.Cells[i]);
-            }
+            return;
+        }
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Task.Run(() => client.ResetCells(new Lifegame.ResetRequest()));
-            }
-            else if (Input.anyKeyDown)
-            {
-                Task.Run(() =>client.UpdateAsync(new Lifegame.UpdateRequest()));
-            }
-            Debug.Log($"update count = {count}, alive cell count: {this.cells.Count(e => e.State == Lifegame.Cell.Alive)}");
+        var responce = cellsResponce;
+        for (int i = 0; i < this.cells.Count; ++i)
+        {
+            this.cells[i].SetState(responce.Cells[i]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Task.Run(() => client.Reset(new Lifegame.ResetRequest()));
         }
     }
 
-    async Task Run()
+    async Task GetCellsLoop()
     {
-        while(channel != null)
+        var sleepTime = System.TimeSpan.FromMilliseconds(10);
+        while (channel != null)
         {
-            count++;
             this.cellsResponce = await client.GetCellsAsync(new Lifegame.CellsRequest());
+            Thread.Sleep(sleepTime);
+            System.GC.Collect();
         }
     }
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     void Initialize()
     {
-        channel = new Channel ($"127.0.0.1:50051", ChannelCredentials.Insecure);
-        client = new Lifegame.LifeGame.LifeGameClient (channel);
+        channel = new Channel($"127.0.0.1:50051", ChannelCredentials.Insecure);
+        client = new Lifegame.Lifegame.LifegameClient(channel);
 
         var size = client.GetFieldSize(new Lifegame.FieldSizeRequest());
         field.constraintCount = (int)size.Width;
@@ -70,11 +92,10 @@ public class LifeGameClient : MonoBehaviour
         this.cellsResponce = client.GetCells(new Lifegame.CellsRequest());
     }
 
-    // Update is called once per frame
     void OnEnable()
     {
         Initialize();
-        Task.Run(this.Run);
+        Task.Run(this.GetCellsLoop);
     }
 
     void OnDisable()
